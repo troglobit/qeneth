@@ -52,9 +52,9 @@ example()
     wget -q --show-progress --progress=bar:force:noscroll https://github.com/kernelkit/infix/releases/download/latest/infix-x86_64-classic.tar.gz >/dev/null
 
     print "Extracting Infix x86-64 Classic image from tarball ..."
-    tar xf infix-x86_64-classic.tar.gz infix-x86_64-classic/infix-x86_64-classic.img
+    tar xf infix-x86_64-classic.tar.gz
     mv infix-x86_64-classic/infix-x86_64-classic.img .
-    rmdir infix-x86_64-classic/
+    rm -rf infix-x86_64-classic
     rm infix-x86_64-classic.tar.gz
 
     print "Creating topology.dot.in ..."
