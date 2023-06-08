@@ -11,8 +11,7 @@ unsquashfs -n -f -d $imgdir $img boot/bzImage >/dev/null
 
 {{> inc/infix-disk}}
 
-exec qemu-system-x86_64 -M pc,accel=kvm:tcg -cpu max \
-  -m {{#qn_mem}}{{qn_mem}}{{/qn_mem}}{{^qn_mem}}192M{{/qn_mem}} \
+exec qemu-system-x86_64 -M pc,accel=kvm:tcg -cpu max {{#qn_mem}}-m {{qn_mem}}{{/qn_mem}} \
 {{> inc/qemu-links}}
-  -kernel $imgdir/boot/bzImage -initrd $img \
+  -kernel $imgdir/boot/bzImage -drive file=$img,if=virtio,format=raw \
 {{> inc/infix-common}}
